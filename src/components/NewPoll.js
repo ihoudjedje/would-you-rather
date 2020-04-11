@@ -6,6 +6,7 @@ class NewPoll extends Component {
   state = {
     optionOne: "",
     optionTwo: "",
+    isLoading: false,
   };
 
   isSubmitButtonActivated = () => {
@@ -31,13 +32,15 @@ class NewPoll extends Component {
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
 
+    this.setState({ isLoading: true });
     dispatch(handleAddQuestion({ optionOne, optionTwo })).then(() => {
       this.setState({ optionOne: "", optionTwo: "" });
+      this.setState({ isLoading: false });
     });
   };
 
   render() {
-    const { optionOne, optionTwo } = this.state;
+    const { optionOne, optionTwo, isLoading } = this.state;
 
     return (
       <div>
