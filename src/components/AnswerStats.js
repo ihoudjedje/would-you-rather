@@ -5,7 +5,7 @@ const AnswerStats = (props) => {
   const { option, totalVotes, users, authedUser } = props;
 
   const optionNbrVotes = option.votes.length;
-  const optionPercentage = (optionNbrVotes * 100) / totalVotes;
+  const optionPercentage = ((optionNbrVotes * 100) / totalVotes).toFixed(2);
 
   return (
     <div>
@@ -23,9 +23,14 @@ const AnswerStats = (props) => {
           </h5>
         </div>
         {option.votes.map((voter) => (
-          <div className="ui image mini label" key={voter}>
+          <div
+            className={
+              "ui image mini label " + (authedUser === voter ? "yellow" : "")
+            }
+            key={voter}
+          >
             <img alt="avatar" src={users[voter].avatarURL} />
-            {authedUser === voter ? "You" : voter}
+            {authedUser === voter ? "YOU" : voter}
           </div>
         ))}
       </div>
