@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
 
 class NewPoll extends Component {
@@ -36,6 +37,7 @@ class NewPoll extends Component {
     dispatch(handleAddQuestion({ optionOne, optionTwo })).then(() => {
       this.setState({ optionOne: "", optionTwo: "" });
       this.setState({ isLoading: false });
+      this.props.history.push("/");
     });
   };
 
@@ -105,4 +107,4 @@ class NewPoll extends Component {
   }
 }
 
-export default connect()(NewPoll);
+export default connect()(withRouter(NewPoll));
