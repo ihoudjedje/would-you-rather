@@ -1,36 +1,57 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
+import { withRouter } from "react-router-dom";
+import QuestionActionButton from "./QuestionActionButton";
+import UnanswredQuestionBody from "./UnanswredQuestionBody";
+import AnswredQuestionBody from "./AnswredQuestionBody";
 
 class Question extends Component {
   state = {};
   render() {
-    const { user, question, authedUser } = this.props;
-    const { name, avatarURL, answers, questions } = user;
+    const { user, question, qId, questionType, source } = this.props;
+    const { name, avatarURL } = user;
     const { timestamp, optionOne, optionTwo } = question;
+
     return (
       <div className="ui card centered">
         <div className="content">
           <img
             alt="avatar"
             src={avatarURL}
-            className="ui mini right floated image"
+            className="ui mini circular image"
           />
+          <br />
+          <br />
           <div className="header">{name} says:</div>
           <div className="meta">{formatDate(timestamp)}</div>
           <div className="description">
             <strong>Would you rather...?</strong>
           </div>
-          <div className="description">{optionOne.text}</div>
-          <div className="description">
-            <strong>OR</strong>
-          </div>
-          <div className="description">{optionTwo.text}</div>
+          <br />
+          {source === "dashboard" && (
+            <div>
+              <p className="description">
+                {optionOne.text} <br /> or ...
+              </p>
+            </div>
+          )}
+          {source === "poll" && questionType === "unanswred" && (
+            <UnanswredQuestionBody
+              qId={qId}
+              answers={{ optionOne, optionTwo }}
+            />
+          )}
+          {source === "poll" && questionType === "answred" && (
+            <AnswredQuestionBody question={question} />
+          )}
         </div>
         <div className="extra content">
-          <div className="ui two buttons">
-            <button className="ui green basic button">Answer Poll</button>
-          </div>
+          <QuestionActionButton
+            questionType={questionType}
+            qId={qId}
+            source={source}
+          />
         </div>
       </div>
     );
@@ -47,4 +68,4 @@ function mapStateToProps({ users, questions, authedUser }, { qId }) {
     authedUser,
   };
 }
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));
