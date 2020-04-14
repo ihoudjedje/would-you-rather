@@ -39,13 +39,13 @@ class QuestionActionButton extends Component {
 
     const buttonBgColor = questionType === "unanswred" ? "green" : "orange";
 
-    return !(source === "poll" && questionType === "unanswred") ? (
+    return (
       <Link className="ui two buttons" to={this.handleButton}>
         <button className={"ui full button " + buttonBgColor}>
           {buttonText}
         </button>
       </Link>
-    ) : null;
+    );
   }
 }
 export default QuestionActionButton;

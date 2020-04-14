@@ -33,9 +33,9 @@ const BoardRecord = (props) => {
   );
 };
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
-    users,
+    users: authedUser ? users : null,
   };
 }
 

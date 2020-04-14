@@ -2,7 +2,7 @@
 <<<<<<< HEAD
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleAnswerQuestion } from "../actions/users";
+import { handleAnswerQuestion } from "../../actions/users";
 import { withRouter } from "react-router-dom";
 
 =======

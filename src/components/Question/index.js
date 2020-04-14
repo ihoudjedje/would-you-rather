@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatDate } from "../utils/helpers";
+import { formatDate } from "../../utils/helpers";
 import { withRouter } from "react-router-dom";
 import QuestionActionButton from "./QuestionActionButton";
 import UnanswredQuestionBody from "./UnanswredQuestionBody";
@@ -46,25 +46,31 @@ class Question extends Component {
             <AnswredQuestionBody question={question} />
           )}
         </div>
-        <div className="extra content">
-          <QuestionActionButton
-            questionType={questionType}
-            qId={qId}
-            source={source}
-          />
-        </div>
+        {!(source === "poll" && questionType === "unanswred") && (
+          <div className="extra content">
+            <QuestionActionButton
+              questionType={questionType}
+              qId={qId}
+              source={source}
+            />
+          </div>
+        )}
       </div>
     );
   }
 }
 
 function mapStateToProps({ users, questions, authedUser }, { qId }) {
-  const question = questions[qId];
-  const user = users[question.author];
+  let question;
+  let user;
+  if (authedUser) {
+    question = questions[qId];
+    user = users[question.author];
+  }
 
   return {
-    user,
-    question,
+    user: authedUser ? user : null,
+    question: authedUser ? question : null,
     authedUser,
   };
 }

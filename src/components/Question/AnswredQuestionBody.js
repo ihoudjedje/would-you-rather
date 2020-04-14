@@ -58,7 +58,7 @@ const AnswredQuestionBody = (props) => {
 
 function mapStateToProps({ users, authedUser }) {
   return {
-    users,
+    users: authedUser ? users : null,
     authedUser,
   };
 }
