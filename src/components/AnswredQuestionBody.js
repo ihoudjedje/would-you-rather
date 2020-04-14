@@ -42,7 +42,7 @@ const AnswredQuestionBody = (props) => {
             <div className="progress">{optionTwoPercentage} %</div>
           </div>
           <h5>
-            {optionOneNbrVotes} out of {votesNumber} votes
+            {optionTwoNbrVotes} out of {votesNumber} votes
           </h5>
         </div>
         {optionTwo.votes.map((voter) => (
