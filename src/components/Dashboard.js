@@ -74,31 +74,24 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ users, questions, authedUser }) {
-  let questionsAnswredIds;
-  let questionsUnanswredIds;
   let questionsAnswred = [];
   let questionsUnanswred = [];
+
   if (authedUser) {
-    questionsAnswredIds = Object.keys(questions).filter((qId) =>
-      Object.keys(users[authedUser].answers).includes(qId)
+    let userAnswersIds = Object.keys(users[authedUser].answers);
+    let sortedQuestions = Object.keys(questions).sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
     );
-    questionsUnanswredIds = Object.keys(questions).filter(
-      (qId) => !Object.keys(users[authedUser].answers).includes(qId)
-    );
-    questionsAnswredIds.map((q) => questionsAnswred.push(questions[q]));
-    questionsUnanswredIds.map((q) => questionsUnanswred.push(questions[q]));
+    sortedQuestions.forEach((qId) => {
+      if (userAnswersIds.includes(qId)) questionsAnswred.push(qId);
+      else questionsUnanswred.push(qId);
+    });
   }
 
   return {
-    questionsAnswredIds: authedUser ? questionsAnswredIds : null,
-    questionsUnanswredIds: authedUser ? questionsUnanswredIds : null,
+    questionsAnswredIds: authedUser ? questionsAnswred : null,
+    questionsUnanswredIds: authedUser ? questionsUnanswred : null,
     authedUser,
-    // qIds: authedUser
-    //   ? Object.keys(questionsUnanswred).sort(
-    //       (a, b) =>
-    //         questionsUnanswred[b].timestamp - questionsUnanswred[a].timestamp
-    //     )
-    //   : null,
   };
 }
 
