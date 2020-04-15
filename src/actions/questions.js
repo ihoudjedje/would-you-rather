@@ -1,4 +1,4 @@
-import { _saveQuestion } from "../utils/_DATA";
+import { saveQuestion } from "../utils/api";
 import { addQuestionToUser } from "./users";
 
 export const FETCH_QUESTIONS = "FETCH_QUESTIONS";
@@ -32,7 +32,7 @@ export function handleAddQuestion({ optionOne, optionTwo }) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
 
-    return _saveQuestion({
+    return saveQuestion({
       optionOneText: optionOne,
       optionTwoText: optionTwo,
       author: authedUser,
