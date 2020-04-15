@@ -26,7 +26,7 @@ class QuestionActionButton extends Component {
   };
 
   render() {
-    const { questionType, qId, source } = this.props;
+    const { questionType, source } = this.props;
 
     const buttonText =
       source === "poll"
