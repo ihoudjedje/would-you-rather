@@ -74,24 +74,22 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ users, questions, authedUser }) {
-  let questionsAnswred = [];
-  let questionsUnanswred = [];
+  let questionsAnswredIds = [];
+  let questionsUnanswredIds = [];
+  const userAnswersIds = Object.keys(users[authedUser].answers);
 
-  if (authedUser) {
-    let userAnswersIds = Object.keys(users[authedUser].answers);
-    let sortedQuestions = Object.keys(questions).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    );
-    sortedQuestions.forEach((qId) => {
-      if (userAnswersIds.includes(qId)) questionsAnswred.push(qId);
-      else questionsUnanswred.push(qId);
-    });
-  }
+  let sortedQuestions = Object.keys(questions).sort(
+    (a, b) => questions[b].timestamp - questions[a].timestamp
+  );
+  sortedQuestions.forEach((qId) => {
+    if (userAnswersIds.includes(qId)) questionsAnswredIds.push(qId);
+    else questionsUnanswredIds.push(qId);
+  });
 
   return {
-    questionsAnswredIds: authedUser ? questionsAnswred : null,
-    questionsUnanswredIds: authedUser ? questionsUnanswred : null,
     authedUser,
+    questionsAnswredIds,
+    questionsUnanswredIds,
   };
 }
 

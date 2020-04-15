@@ -40,7 +40,7 @@ const AnswerStats = (props) => {
 
 function mapStateToProps({ users, authedUser }) {
   return {
-    users: authedUser ? users : null,
+    users,
     authedUser,
   };
 }

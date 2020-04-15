@@ -28,7 +28,7 @@ class LeaderBoard extends Component {
   }
 }
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users }) {
   const ordredUsersIds = Object.keys(users).sort(
     (a, b) =>
       Object.keys(users[b].answers).length +
@@ -36,7 +36,7 @@ function mapStateToProps({ users, authedUser }) {
       (Object.keys(users[a].answers).length + users[a].questions.length)
   );
   return {
-    usersIds: authedUser ? ordredUsersIds : null,
+    usersIds: ordredUsersIds,
   };
 }
 

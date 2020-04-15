@@ -15,10 +15,6 @@ class QuestionActionButton extends Component {
         state: { questionType, qId },
       };
     }
-    if (source === "poll" && questionType === "unanswred") {
-      // submit answer
-      console.log("Submit button here");
-    }
     if (source === "poll" && questionType === "answred") {
       return "/";
     }

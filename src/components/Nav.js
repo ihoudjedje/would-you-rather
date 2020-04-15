@@ -39,8 +39,6 @@ const Nav = (props) => {
 };
 
 function mapStateToProps({ authedUser, users }) {
-  console.log(users);
-
   return {
     authedUser,
     users,

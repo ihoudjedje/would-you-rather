@@ -94,9 +94,11 @@ class NewPoll extends Component {
           <br />
           <div>
             <button
-              className="container ui button positive"
+              className={
+                "container ui button positive " + (isLoading ? "loading" : "")
+              }
               onClick={this.handleSubmitButton}
-              disabled={!this.isSubmitButtonActivated()}
+              disabled={!this.isSubmitButtonActivated() || isLoading}
             >
               Submit
             </button>

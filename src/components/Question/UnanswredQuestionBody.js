@@ -13,6 +13,7 @@ import { handleAnswerQuestion } from "../actions/users";
 class UnanswredQuestionBody extends Component {
   state = {
     checkboxValue: "",
+    isLoading: false,
   };
 <<<<<<< HEAD
 
@@ -25,13 +26,16 @@ class UnanswredQuestionBody extends Component {
     const { dispatch, authedUser, qId } = this.props;
     const answer = this.state.checkboxValue;
 
-    dispatch(handleAnswerQuestion({ authedUser, qId, answer }));
-    this.props.history.push("/");
+    this.setState({ isLoading: true });
+    dispatch(handleAnswerQuestion({ authedUser, qId, answer })).then(() => {
+      this.setState({ isLoading: false });
+      this.props.history.push("/");
+    });
   };
 
   render() {
     const { optionOne, optionTwo } = this.props.answers;
-    const { checkboxValue } = this.state;
+    const { checkboxValue, isLoading } = this.state;
 
     return (
       <form className="ui form">
@@ -65,8 +69,10 @@ class UnanswredQuestionBody extends Component {
         </div>
         <div className="ui two buttons">
           <button
-            className="ui full button positive"
-            disabled={!checkboxValue}
+            className={
+              "ui full button positive " + (isLoading ? "loading" : "")
+            }
+            disabled={!checkboxValue || isLoading}
             onClick={this.handleSubmit}
           >
             Submit
