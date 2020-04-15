@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 
 import Nav from "./Nav";
 import NewPoll from "./NewPoll";
+import NotFound from "./NotFound";
 import Dashboard from "./Dashboard";
 import LeaderBoard from "./LeaderBoard";
 import AnswredPollPage from "./AnswredPollPage";
@@ -24,11 +25,14 @@ class App extends Component {
           <div className="container">
             <Nav />
             {isLoading ? null : (
-              <div className="ui segment">
-                <Route path="/" exact component={Dashboard} />
-                <Route path="/add" component={NewPoll} />
-                <Route path="/leaderboard" component={LeaderBoard} />
-                <Route path="/questions/:id" component={AnswredPollPage} />
+              <div className="ui center aligned segment">
+                <Switch>
+                  <Route path="/" exact component={Dashboard} />
+                  <Route path="/add" component={NewPoll} />
+                  <Route path="/leaderboard" component={LeaderBoard} />
+                  <Route path="/questions/:id" component={AnswredPollPage} />
+                  <Route component={NotFound} />
+                </Switch>
               </div>
             )}
           </div>
