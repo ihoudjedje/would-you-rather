@@ -1,10 +1,11 @@
-# MyReads Project
+# Would You Rather Game Project
 
 Udacity's React Nanodegree 2nd Project - Would You Rather Web Game
 
 ## Result
 
 ![](result.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
