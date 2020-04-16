@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 
 import Nav from "./Nav";
+import Login from "./Login";
 import NewPoll from "./NewPoll";
 import NotFound from "./NotFound";
 import Dashboard from "./Dashboard";
@@ -22,9 +23,11 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <div className="container">
-            <Nav />
-            {isLoading ? null : (
+          {isLoading ? (
+            <Route component={Login} />
+          ) : (
+            <div className="container">
+              <Nav />
               <div className="ui center aligned segment">
                 <Switch>
                   <Route path="/" exact component={Dashboard} />
@@ -34,8 +37,8 @@ class App extends Component {
                   <Route component={NotFound} />
                 </Switch>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </Fragment>
       </Router>
     );

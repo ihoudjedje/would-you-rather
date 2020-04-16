@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { setAuthedUser } from "../actions/authedUser";
 
 const Nav = (props) => {
-  const { authedUser, users } = props;
+  const { dispatch, authedUser, users } = props;
+
+  const handleLogout = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(setAuthedUser(null));
+    },
+    [dispatch]
+  );
 
   return (
     <div className="ui equal width grid">
@@ -26,10 +35,10 @@ const Nav = (props) => {
           <img
             alt="avatar"
             src={authedUser ? users[authedUser].avatarURL : ""}
-            className="ui mini image"
+            className="ui mini middle aligned image"
           />
           <h3 className="ui basic label">{authedUser}</h3>
-          <button className="ui red icon button">
+          <button className="ui red icon button" onClick={handleLogout}>
             <i aria-hidden="true" className="log out icon"></i>
           </button>
         </div>
