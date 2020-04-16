@@ -15,8 +15,9 @@ class UnanswredQuestionBody extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { dispatch, authedUser, qId } = this.props;
+    const { dispatch, authedUser, question } = this.props;
     const answer = this.state.checkboxValue;
+    const qId = question.id;
 
     this.setState({ isLoading: true });
     dispatch(handleAnswerQuestion({ authedUser, qId, answer })).then(() => {
@@ -26,7 +27,7 @@ class UnanswredQuestionBody extends Component {
   };
 
   render() {
-    const { optionOne, optionTwo } = this.props.answers;
+    const { optionOne, optionTwo } = this.props.question;
     const { checkboxValue, isLoading } = this.state;
 
     return (

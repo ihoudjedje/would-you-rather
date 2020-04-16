@@ -11,7 +11,7 @@ class Question extends Component {
   render() {
     const { user, question, qId, questionType, source } = this.props;
     const { name, avatarURL } = user;
-    const { timestamp, optionOne, optionTwo } = question;
+    const { timestamp, optionOne } = question;
 
     return (
       <div className="ui card centered">
@@ -37,10 +37,7 @@ class Question extends Component {
             </div>
           )}
           {source === "poll" && questionType === "unanswred" && (
-            <UnanswredQuestionBody
-              qId={qId}
-              answers={{ optionOne, optionTwo }}
-            />
+            <UnanswredQuestionBody question={question} />
           )}
           {source === "poll" && questionType === "answred" && (
             <AnswredQuestionBody question={question} />
