@@ -22,3 +22,12 @@ body {
   margin: 0 auto;
   max-width: 400px;
 }
+
+.notice-container {
+  padding: 100px 100px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.7em;
+}
