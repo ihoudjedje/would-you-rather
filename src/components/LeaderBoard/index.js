@@ -19,8 +19,8 @@ class LeaderBoard extends Component {
           </tr>
         </thead>
         <tbody className="center aligned">
-          {usersIds.map((userId) => (
-            <BoardRecord userId={userId} key={userId} />
+          {usersIds.map((userId, idx) => (
+            <BoardRecord userId={userId} key={userId} idx={idx} />
           ))}
         </tbody>
       </table>

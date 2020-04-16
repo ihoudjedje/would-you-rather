@@ -2,12 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 
 const BoardRecord = (props) => {
-  const { users, userId } = props;
+  const { users, userId, idx } = props;
 
   const user = users[userId];
   const answredQuestions = Object.keys(user.answers).length;
   const createdQuestions = user.questions.length;
   const score = answredQuestions + createdQuestions;
+  const winners = [
+    { prize: "Gold", color: "yellow" },
+    { prize: "Bronze", color: "orange" },
+    { prize: "Silver", color: "gray" },
+  ];
 
   return (
     <tr>
@@ -28,7 +33,15 @@ const BoardRecord = (props) => {
       </td>
       <td>{answredQuestions}</td>
       <td>{createdQuestions}</td>
-      <td>{score}</td>
+      <td>
+        {score}
+        {idx < 3 && (
+          <div className={"ui right ribbon label " + winners[idx].color}>
+            <i aria-hidden="true" className="winner icon"></i>
+            {/* {winners[idx].prize} */}
+          </div>
+        )}
+      </td>
     </tr>
   );
 };
