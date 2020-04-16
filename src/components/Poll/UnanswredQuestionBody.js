@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleAnswerQuestion } from "../../actions/users";
 import { withRouter } from "react-router-dom";
+import { handleAnswerQuestion } from "../../actions/users";
 
 class UnanswredQuestionBody extends Component {
   state = {
@@ -22,7 +22,10 @@ class UnanswredQuestionBody extends Component {
     this.setState({ isLoading: true });
     dispatch(handleAnswerQuestion({ authedUser, qId, answer })).then(() => {
       this.setState({ isLoading: false });
-      this.props.history.push("/");
+      this.props.history.push({
+        pathname: `/questions/${qId}`,
+        state: { questionType: "answred", qId },
+      });
     });
   };
 

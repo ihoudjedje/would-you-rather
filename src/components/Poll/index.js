@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Question from "./Question";
 
-class AnswredPollPage extends Component {
+class Poll extends Component {
   state = {};
   render() {
     const { questionType, qId } = this.props.location.state;
@@ -10,4 +10,4 @@ class AnswredPollPage extends Component {
   }
 }
 
-export default AnswredPollPage;
+export default Poll;
