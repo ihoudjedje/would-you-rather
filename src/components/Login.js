@@ -14,20 +14,20 @@ class Login extends Component {
 
   render() {
     const { users, isLoading } = this.props;
-    console.log(users);
 
     return (
       <div className="container">
-        <div className="ui center aligned header">
-          <h2 className="ui icon header">
-            <i aria-hidden="true" className="shield alternate icon yellow"></i>
-            Authentication
-            <br />
-            <br />
-            <div className="sub header">
-              Please choose a user below or create a new one!
-            </div>
+        <div>
+          <h2 className="ui icon center aligned header">
+            <i aria-hidden="true" className="game circular icon blue"></i>
+            <div className="content">Welcome To "Would You Rather?" Game</div>
           </h2>
+        </div>
+        <div className="ui center aligned header">
+          <br />
+          <div className="sub header">
+            Please choose a user down below to continue
+          </div>
           <div role="list" className="ui divided center aligned list">
             <div className="ui card centered">
               <div className="content">
@@ -54,7 +54,7 @@ class Login extends Component {
                         </div>
                         <div className="right floated">
                           <button
-                            className="ui mini button"
+                            className="ui mini primary button"
                             onClick={this.handleOnSignUp}
                             value={user}
                           >
@@ -67,6 +67,11 @@ class Login extends Component {
                 </div>
               </div>
             </div>
+            <p className="footer">
+              <a href="https://www.freepik.com/free-photos-vectors/design">
+                Avatar characters created by freepik - www.freepik.com
+              </a>
+            </p>
           </div>
         </div>
       </div>
