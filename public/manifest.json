@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Would You Rather?",
+  "name": "Would You Rather?",
   "icons": [
     {
       "src": "favicon.ico",
