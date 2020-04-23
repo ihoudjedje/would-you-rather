@@ -1,19 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
-class NotFound extends Component {
-  state = {};
-  render() {
-    return (
-      <h2 className="ui icon header">
-        <i aria-hidden="true" className="unlinkify icon"></i>
-        <h1>404</h1>
-        Not Found :(
-        <div className="sub header">
-          Please make sure you enter a valid URL & try again!
-        </div>
-      </h2>
-    );
-  }
+function NotFound() {
+  const location = useLocation();
+
+  return (
+    <h2 className="ui icon header">
+      <i aria-hidden="true" className="unlinkify icon"></i>
+      <h1>404</h1>
+      Not match for {location.pathname}
+      <br />
+      <br />
+      <div className="sub header">Please make sure you enter a valid URL</div>
+    </h2>
+  );
 }
 
 export default NotFound;
