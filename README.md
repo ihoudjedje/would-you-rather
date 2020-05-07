@@ -11,7 +11,7 @@
     Udacity's <a href="https://www.udacity.com/course/react-nanodegree--nd019">React Nanodegree</a> 2nd Project
     <br />
     <br />
-    <a href="https://youtu.be/FjxgGaLCVNo">View Demo</a>
+    <a href="https://ilyesudo-would-you-rather.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/ilyeSudo/would-you-rather/issues">Report Bug</a>
     ·
@@ -19,9 +19,12 @@
   </p>
 </p>
 
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [![Netlify Status](https://api.netlify.com/api/v1/badges/77f48d68-c1f2-47d9-b5b3-0237eb80d3f1/deploy-status)](https://app.netlify.com/sites/ilyesudo-would-you-rather/deploys)
+
 ## Table of Contents
 
 - [About the Project](#about-the-project)
+  - [Live Demo](#live-demo)
   - [Video Demo](#video-demo)
   - [GIF Demo](gif-demo)
   - [User Experience](#user-experience)
@@ -39,6 +42,8 @@
 - [License](#license)
 
 ## About The Project
+
+### [Live Demo](https://ilyesudo-would-you-rather.netlify.app/)
 
 ### [Video Demo](https://youtu.be/FjxgGaLCVNo)
 
